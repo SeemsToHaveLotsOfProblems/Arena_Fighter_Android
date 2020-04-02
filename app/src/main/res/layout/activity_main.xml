@@ -23,7 +23,7 @@
         android:id="@+id/arenaBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
+        android:layout_marginTop="140dp"
         android:text="@string/arenaBtn"
         app:layout_constraintEnd_toEndOf="@+id/waitingRoomImageView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,20 +48,6 @@
         app:layout_constraintTop_toBottomOf="@+id/trainBtn"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
-        android:text="@string/nameTextView"
-        android:textColor="#CDDC39"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageView
         android:id="@+id/txtBackgroundImageView"
         android:layout_width="381dp"
@@ -73,4 +59,18 @@
         app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
+        android:text="@string/nameTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
