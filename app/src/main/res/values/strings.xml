@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Arena_Fighter_Android</string>
+
+    //Buttons
+    <string name="arenaBtn">Fight in the Arena</string>
+    <string name="trainingBtn">Train yourself</string>
+    <string name="talkToFansBtn">Talk to your fans</string>
+
+    //Character information
+    <string name="nameTextView">Aaren</string>
+    <string name="nameDescriptionTextView">Name:</string>
+    <string name="cashDescriptionTextView">Cash:</string>
+    <string name="cashTextView">$ 15</string>
+    <string name="fanDescriptionTextView">Fans:</string>
+    <string name="fanTextView">0</string>
+    <string name="strengthDescriptionTextView">Strength:</string>
+    <string name="strengthTextView">1</string>
+    <string name="enduranceDescriptionTextView">Endurance:</string>
+    <string name="enduranceTextView">5</string>
+    <string name="fatigueDescriptionTextView">Fatigue:</string>
+    <string name="fatigueTextView">1</string>
+    <string name="totalFightsDescriptionTextView">Total Fights:</string>
+    <string name="totalFightsTextView">0</string>
+    <string name="fightsWonDescriptionTextView">Fights Won:</string>
+    <string name="fightsWonTextView">0</string>
+    <string name="fightsLostDescriptionTextView">Fights Lost:</string>
+    <string name="fightsLostTextView">0</string>
 </resources>
