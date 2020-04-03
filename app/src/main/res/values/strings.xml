@@ -6,6 +6,9 @@
     <string name="trainingBtn">Train yourself</string>
     <string name="talkToFansBtn">Talk to your fans</string>
 
+    <string name="joinArenaButton">Join the Arena</string>
+    <string name="settingsButton">Settings</string>
+
     //Character information
     <string name="statsTextView">Stats</string>
     <string name="nameTextView">Aaren</string>
