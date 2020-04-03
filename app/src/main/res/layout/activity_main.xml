@@ -230,4 +230,98 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/statsBackgroundImageView"
         app:layout_constraintTop_toBottomOf="@+id/enduranceTextView" />
+
+    <TextView
+        android:id="@+id/totalFightsDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/totalFightsDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/statsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/fatigueDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/totalFightsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/totalFightsTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/statsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/fatigueTextview" />
+
+    <TextView
+        android:id="@+id/fightsWonDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/fightsWonDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/statsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/totalFightsDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/fightsWonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/fightsWonTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/statsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/totalFightsTextView" />
+
+    <TextView
+        android:id="@+id/fightsLostDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/fightsLostDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/statsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/fightsWonDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/fightsLostTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/fightsLostTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/statsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/fightsWonTextView" />
+
+    <TextView
+        android:id="@+id/statsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/statsTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/strengthDescriptionTextView"
+        app:layout_constraintEnd_toEndOf="@+id/statsBackgroundImageView"
+        app:layout_constraintStart_toStartOf="@+id/statsBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/statsBackgroundImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
