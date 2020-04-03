@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Arena_Fighter_Android</string>
 
+    <string name="nameEntryEditText">Enter a name</string>
+
     //Buttons
     <string name="arenaBtn">Fight in the Arena</string>
     <string name="trainingBtn">Train yourself</string>
@@ -8,6 +10,7 @@
 
     <string name="joinArenaButton">Join the Arena</string>
     <string name="settingsButton">Settings</string>
+    <string name="nameSubmitButton">Continue</string>
 
     //Character information
     <string name="statsTextView">Stats</string>
