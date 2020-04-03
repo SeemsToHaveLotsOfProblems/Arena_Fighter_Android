@@ -14,7 +14,7 @@ public class logo extends AppCompatActivity {
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent mainActivityIntent = new Intent(logo.this, MainActivity.class);
+            Intent mainActivityIntent = new Intent(logo.this, JoinArena.class);
             logo.this.startActivity(mainActivityIntent);
         }//EndOnClick
     };//End OnClickListener
@@ -25,7 +25,7 @@ public class logo extends AppCompatActivity {
         setContentView(R.layout.activity_logo);
 
         //Test code
-        Intent mainActivityIntent = new Intent(logo.this, MainActivity.class);
+        Intent mainActivityIntent = new Intent(logo.this, JoinArena.class);
         logo.this.startActivity(mainActivityIntent);
     }
 }
