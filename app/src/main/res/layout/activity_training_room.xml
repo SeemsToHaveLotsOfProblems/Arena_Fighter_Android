@@ -144,4 +144,82 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/trainingRoomStatWindow"
         app:layout_constraintTop_toBottomOf="@+id/trainingRoomEnduranceDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/trainingRoomCashTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/cashTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomNameTextView" />
+
+    <TextView
+        android:id="@+id/trainingRoomStrengthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/strengthTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomCashTextView" />
+
+    <TextView
+        android:id="@+id/trainingRoomEnduranceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/enduranceTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomStrengthTextView" />
+
+    <TextView
+        android:id="@+id/trainingRoomFatigueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/fatigueTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomEnduranceTextView" />
+
+    <ImageView
+        android:id="@+id/trainingRoomTextBackgroundImageView"
+        android:layout_width="402dp"
+        android:layout_height="191dp"
+        android:layout_marginBottom="25dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/trainingRoomTextTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#CDDC39"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/trainingRoomTextBackgroundImageView"
+        app:layout_constraintEnd_toEndOf="@+id/trainingRoomTextBackgroundImageView"
+        app:layout_constraintStart_toStartOf="@+id/trainingRoomTextBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/trainingRoomTextBackgroundImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
