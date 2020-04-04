@@ -1,11 +1,13 @@
 package com.fatalerrorapps.arena_fighter_android;
 
+import android.app.Application;
+
 import java.util.Random;
 
-public class Player {
+public class Player extends Application {
 
     //Global Variables
-    String playerName = "Aaren";
+    static String playerName = "Aaren";
     static int playerCash = 15;
     static int playerFans = 0;
     static int playerStrength = 1;

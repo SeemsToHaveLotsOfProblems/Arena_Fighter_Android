@@ -6,4 +6,142 @@
     android:layout_height="match_parent"
     tools:context=".TrainingRoom">
 
+    <ImageView
+        android:id="@+id/traingingRoomBackgroundImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/waiting_room_background" />
+
+    <Button
+        android:id="@+id/trainStrengthButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/trainStrengthButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/trainEnduranceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/trainEnduranceButton"
+        app:layout_constraintEnd_toEndOf="@+id/traingingRoomBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/trainStrengthButton" />
+
+    <Button
+        android:id="@+id/trainFatigueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/trainFatigueButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trainEnduranceButton" />
+
+    <Button
+        android:id="@+id/backToWaitingRoomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/backToWaitingRoomButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trainFatigueButton" />
+
+    <ImageView
+        android:id="@+id/trainingRoomStatWindow"
+        android:layout_width="227dp"
+        android:layout_height="205dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="184dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/trainingRoomNameDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/nameDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toTopOf="@+id/trainingRoomStatWindow" />
+
+    <TextView
+        android:id="@+id/trainingRoomNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/nameTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toTopOf="@+id/trainingRoomStatWindow" />
+
+    <TextView
+        android:id="@+id/trainingRoomCashDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/cashDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomNameDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/trainingRoomStrengthDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/strengthDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomCashDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/trainingRoomEnduranceDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/enduranceDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomStrengthDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/trainingRoomFatigueDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/fatigueDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/trainingRoomStatWindow"
+        app:layout_constraintTop_toBottomOf="@+id/trainingRoomEnduranceDescriptionTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

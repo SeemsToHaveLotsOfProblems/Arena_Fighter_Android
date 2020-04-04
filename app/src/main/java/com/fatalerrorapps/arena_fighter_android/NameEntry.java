@@ -28,7 +28,8 @@ public class NameEntry extends AppCompatActivity {
                 if(playerName.isEmpty()){
                     NameEntry.this.startActivity(callWaitingRoom);
                 } else {
-                    callWaitingRoom.putExtra(playerName, playerName);
+                    Player player = new Player();
+                    Player.playerName = playerName;
                     NameEntry.this.startActivity(callWaitingRoom);
                 }
 

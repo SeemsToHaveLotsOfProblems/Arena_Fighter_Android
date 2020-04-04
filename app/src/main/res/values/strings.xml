@@ -12,6 +12,11 @@
     <string name="settingsButton">Settings</string>
     <string name="nameSubmitButton">Continue</string>
 
+    <string name="backToWaitingRoomButton">Back to Waiting Room</string>
+    <string name="trainStrengthButton">Train Strength</string>
+    <string name="trainEnduranceButton">Train Endurance</string>
+    <string name="trainFatigueButton">Train Fatigue</string>
+
     //Character information
     <string name="statsTextView">Stats</string>
     <string name="nameTextView">Aaren</string>
