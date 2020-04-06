@@ -17,6 +17,9 @@
     <string name="trainEnduranceButton">Train Endurance</string>
     <string name="trainFatigueButton">Train Fatigue</string>
 
+    <string name="yesButton">Yes</string>
+    <string name="noButton">No</string>
+
     //Character information
     <string name="statsTextView">Stats</string>
     <string name="nameTextView">Aaren</string>

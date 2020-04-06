@@ -3,6 +3,8 @@ package com.fatalerrorapps.arena_fighter_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class TrainingRoom extends AppCompatActivity {
@@ -16,6 +18,35 @@ public class TrainingRoom extends AppCompatActivity {
         //Setting stats
         textViewSetters();
 
+        //Finding buttons
+        Button trainStrengthButton = findViewById(R.id.trainStrengthButton);
+        Button trainEnduranceButton = findViewById(R.id.trainEnduranceButton);
+        Button trainFatigueButton = findViewById(R.id.trainFatigueButton);
+        Button yesButton = findViewById(R.id.yesButton);
+        Button noButton = findViewById(R.id.noButton);
+
+        //Button functions
+        trainStrengthButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goldCheck(1);
+            }
+        });//End trainStrengthButton
+
+        trainEnduranceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goldCheck(2);
+            }
+        });//End enduranceButton
+
+        trainFatigueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goldCheck(3);
+            }
+        });//End fatigueButton
+
         /*
          * trainingRoomTextTextView & trainingRoomTextBackgroundImageView
          * are invisible to start.
@@ -24,6 +55,17 @@ public class TrainingRoom extends AppCompatActivity {
          */
 
     }//End onCreate
+
+
+    private void goldCheck(int statToTrain){
+        //check for cash and toss over to statTraining if player had enough
+    }//End goldCheck
+
+
+    private void statTraining(int statToTrain){
+
+    }//End statTraining
+
 
     private void textViewSetters(){
         //Player Name
