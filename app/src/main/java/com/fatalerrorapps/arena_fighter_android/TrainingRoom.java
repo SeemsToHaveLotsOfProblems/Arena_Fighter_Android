@@ -2,6 +2,7 @@ package com.fatalerrorapps.arena_fighter_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,13 +61,13 @@ public class TrainingRoom extends AppCompatActivity {
             }
         });//End fatigueButton
 
-        /*
-         * trainingRoomTextTextView & trainingRoomTextBackgroundImageView
-         * are invisible to start.
-         * Use: YourTextView.setVisiblity(View.VISIBLE)
-         * to make them visible and add text
-         */
-
+        backToWaitingRoomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backToWaitingRoomIntent = new Intent(TrainingRoom.this, WaitingRoom.class);
+                TrainingRoom.this.startActivity(backToWaitingRoomIntent);
+            }
+        });//End backToWaitingRoomButton
     }//End onCreate
 
 
@@ -88,7 +89,11 @@ public class TrainingRoom extends AppCompatActivity {
             valOfStat = Player.playerFatigue;
             nameOfStat = "fatigue";
         }
-        final int costToTrain = valOfStat * rand.nextInt(Player.playerLuck);
+        int costToTrain = valOfStat * rand.nextInt(Player.playerLuck);
+        //Setting a minimum cost
+        if(costToTrain < valOfStat){
+            costToTrain += valOfStat;
+        }
 
         //Setting the text to show.
         String textToShow = "Spend $" + costToTrain + ", to train " + nameOfStat + "?";
@@ -120,11 +125,12 @@ public class TrainingRoom extends AppCompatActivity {
             }
         });//End noButton
 
+        final int finalCostToTrain = costToTrain;
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Player.playerCash >= costToTrain){
-                    Player.playerCash -= costToTrain;
+                if (Player.playerCash >= finalCostToTrain){
+                    Player.playerCash -= finalCostToTrain;
 
                     //Updating the cash value
                     TextView playerCash = findViewById(R.id.trainingRoomCashTextView);
