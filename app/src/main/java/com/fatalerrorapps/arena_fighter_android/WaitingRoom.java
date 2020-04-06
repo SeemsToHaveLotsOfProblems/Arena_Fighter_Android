@@ -11,6 +11,11 @@ import android.widget.TextView;
 public class WaitingRoom extends AppCompatActivity {
 
     @Override
+    public void onBackPressed() {
+        // Do Here what ever you want do on back press;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting_room);

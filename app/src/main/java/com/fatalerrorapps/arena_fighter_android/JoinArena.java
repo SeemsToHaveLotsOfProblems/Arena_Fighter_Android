@@ -10,6 +10,11 @@ import android.widget.Button;
 public class JoinArena extends AppCompatActivity {
 
     @Override
+    public void onBackPressed() {
+        // Do Here what ever you want do on back press;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_arena);
