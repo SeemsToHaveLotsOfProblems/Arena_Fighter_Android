@@ -28,6 +28,7 @@ public class TrainingRoom extends AppCompatActivity {
         final Button backToWaitingRoomButton = findViewById(R.id.backToWaitingRoomButton);
         final Button yesButton = findViewById(R.id.yesButton);
         final Button noButton = findViewById(R.id.noButton);
+        final Button continueButton = findViewById(R.id.trainingRoomContinueButton);
         final ImageView textBackground = findViewById(R.id.trainingRoomTextBackgroundImageView);
         final TextView text = findViewById(R.id.trainingRoomTextTextView);
 
@@ -36,7 +37,8 @@ public class TrainingRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goldCheck(1, trainStrengthButton,trainEnduranceButton,trainFatigueButton,
-                        yesButton,noButton,text,textBackground,backToWaitingRoomButton);
+                        yesButton,noButton,text,textBackground,backToWaitingRoomButton,
+                        continueButton);
             }
         });//End trainStrengthButton
 
@@ -44,7 +46,8 @@ public class TrainingRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goldCheck(2, trainStrengthButton,trainEnduranceButton,trainFatigueButton,
-                        yesButton,noButton,text,textBackground,backToWaitingRoomButton);
+                        yesButton,noButton,text,textBackground,backToWaitingRoomButton,
+                        continueButton);
             }
         });//End enduranceButton
 
@@ -52,7 +55,8 @@ public class TrainingRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goldCheck(3, trainStrengthButton,trainEnduranceButton,trainFatigueButton,
-                        yesButton,noButton,text,textBackground,backToWaitingRoomButton);
+                        yesButton,noButton,text,textBackground,backToWaitingRoomButton,
+                        continueButton);
             }
         });//End fatigueButton
 
@@ -66,9 +70,10 @@ public class TrainingRoom extends AppCompatActivity {
     }//End onCreate
 
 
-    private void goldCheck(int statToTrain, final Button trainStrengthButton, final Button trainEnduranceButton,
+    private void goldCheck(final int statToTrain, final Button trainStrengthButton, final Button trainEnduranceButton,
                            final Button trainFatigueButton, final Button yesButton, final Button noButton,
-                           final TextView text, final ImageView textBackground, final Button backToWaitingRoomButton){
+                           final TextView text, final ImageView textBackground, final Button backToWaitingRoomButton,
+                           final Button continueButton){
         //check for cash and toss over to statTraining if player had enough
         Random rand = new Random();
         int valOfStat = 0;
@@ -83,7 +88,7 @@ public class TrainingRoom extends AppCompatActivity {
             valOfStat = Player.playerFatigue;
             nameOfStat = "fatigue";
         }
-        int costToTrain = valOfStat * rand.nextInt(Player.playerLuck);
+        final int costToTrain = valOfStat * rand.nextInt(Player.playerLuck);
 
         //Setting the text to show.
         String textToShow = "Spend $" + costToTrain + ", to train " + nameOfStat + "?";
@@ -115,11 +120,51 @@ public class TrainingRoom extends AppCompatActivity {
             }
         });//End noButton
 
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Player.playerCash >= costToTrain){
+                    Player.playerCash -= costToTrain;
+
+                    //Updating the cash value
+                    TextView playerCash = findViewById(R.id.trainingRoomCashTextView);
+                    playerCash.setText(String.valueOf(Player.playerCash));
+
+                    statTraining(statToTrain, trainStrengthButton,trainEnduranceButton,trainFatigueButton,
+                            yesButton,noButton,text,textBackground,backToWaitingRoomButton,
+                            continueButton);
+                }else{
+                    text.setText(R.string.notEnoughCash);
+                    yesButton.setVisibility(View.INVISIBLE);
+                    noButton.setVisibility(View.INVISIBLE);
+                    continueButton.setVisibility(View.VISIBLE);
+
+                    continueButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            trainStrengthButton.setVisibility(View.VISIBLE);
+                            trainEnduranceButton.setVisibility(View.VISIBLE);
+                            trainFatigueButton.setVisibility(View.VISIBLE);
+                            textBackground.setVisibility(View.INVISIBLE);
+                            backToWaitingRoomButton.setVisibility(View.VISIBLE);
+                            text.setVisibility(View.INVISIBLE);
+                            continueButton.setVisibility(View.INVISIBLE);
+                        }
+                    });//End continueButton
+                }//End if/else
+            }//End onClick
+        });//End yesButton
+
 
     }//End goldCheck
 
 
-    private void statTraining(int statToTrain){
+    private void statTraining(int statToTrain, final Button trainStrengthButton, final Button trainEnduranceButton,
+                              final Button trainFatigueButton, final Button yesButton, final Button noButton,
+                              final TextView text, final ImageView textBackground, final Button backToWaitingRoomButton,
+                              final Button continueButton){
+        //Train stat with cool math crap and show results
+
 
     }//End statTraining
 

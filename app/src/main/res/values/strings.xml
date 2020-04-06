@@ -20,6 +20,8 @@
     <string name="yesButton">Yes</string>
     <string name="noButton">No</string>
 
+    <string name="continueButton">Continue</string>
+
     //Character information
     <string name="statsTextView">Stats</string>
     <string name="nameTextView">Aaren</string>
@@ -40,4 +42,7 @@
     <string name="fightsWonTextView">0</string>
     <string name="fightsLostDescriptionTextView">Fights Lost:</string>
     <string name="fightsLostTextView">0</string>
+
+    //In Game Text
+    <string name="notEnoughCash">"You don't have enough cash to train!"</string>
 </resources>
