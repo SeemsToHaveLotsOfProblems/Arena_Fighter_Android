@@ -22,6 +22,9 @@
 
     <string name="continueButton">Continue</string>
 
+    <string name="arenaAttackButton">Attack</string>
+    <string name="arenaDefendButton">Defend</string>
+
     //Character information
     <string name="statsTextView">Stats</string>
     <string name="nameTextView">Aaren</string>
@@ -45,4 +48,5 @@
 
     //In Game Text
     <string name="notEnoughCash">"You don't have enough cash to train!"</string>
+    <string name="healthDescription">Health:</string>
 </resources>

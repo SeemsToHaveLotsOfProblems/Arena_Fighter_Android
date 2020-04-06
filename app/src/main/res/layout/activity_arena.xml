@@ -15,5 +15,187 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/waiting_room_background" />
+        app:srcCompat="@drawable/arena_background" />
+
+    <ImageView
+        android:id="@+id/arenaPlayerStatsBackgroundImageView"
+        android:layout_width="191dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/arenaPlayerNameDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/nameDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/arenaPlayerStatsBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/arenaPlayerStatsBackgroundImageView" />
+
+    <TextView
+        android:id="@+id/arenaPlayerNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/nameTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/arenaPlayerStatsBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/arenaPlayerStatsBackgroundImageView" />
+
+    <TextView
+        android:id="@+id/arenaPlayerHealthDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/healthDescription"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/arenaPlayerStatsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/arenaPlayerNameDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/arenaPlayerHealthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:text="100"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/arenaPlayerStatsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/arenaPlayerNameTextView" />
+
+    <ImageView
+        android:id="@+id/arenaOpponentStatsBackgroundImageView"
+        android:layout_width="191dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/arenaOpponentNameDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/nameDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/arenaOpponentStatsBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/arenaOpponentStatsBackgroundImageView" />
+
+    <TextView
+        android:id="@+id/arenaOpponentNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="Bobstine"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/arenaOpponentStatsBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/arenaOpponentStatsBackgroundImageView" />
+
+    <TextView
+        android:id="@+id/arenaOpponentHealthDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/healthDescription"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/arenaOpponentStatsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/arenaOpponentNameDescriptionTextView" />
+
+    <TextView
+        android:id="@+id/arenaOpponentHealthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:text="100"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/arenaOpponentStatsBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/arenaOpponentNameTextView" />
+
+    <Button
+        android:id="@+id/arenaAttackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/arenaAttackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arenaOpponentStatsBackgroundImageView" />
+
+    <Button
+        android:id="@+id/arenaDefendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/arenaDefendButton"
+        app:layout_constraintEnd_toEndOf="@+id/arenaBackgroundImageView"
+        app:layout_constraintTop_toBottomOf="@+id/arenaAttackButton" />
+
+    <ImageView
+        android:id="@+id/arenaTextBackgroundImageView"
+        android:layout_width="489dp"
+        android:layout_height="231dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/arenaTextTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/arenaTextBackgroundImageView"
+        app:layout_constraintStart_toStartOf="@+id/arenaTextBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/arenaTextBackgroundImageView" />
+
+    <Button
+        android:id="@+id/arenaContinueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/continueButton"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/arenaTextBackgroundImageView"
+        app:layout_constraintEnd_toEndOf="@+id/arenaBackgroundImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
