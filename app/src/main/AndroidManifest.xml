@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Arena"></activity>
+        <activity android:name=".ArenaClassChoice"></activity>
+        <activity android:name=".Arena" />
         <activity android:name=".NameEntry" />
         <activity android:name=".JoinArena" />
         <activity android:name=".logo">

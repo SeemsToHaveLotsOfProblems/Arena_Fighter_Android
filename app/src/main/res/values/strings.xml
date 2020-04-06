@@ -25,6 +25,12 @@
     <string name="arenaAttackButton">Attack</string>
     <string name="arenaDefendButton">Defend</string>
 
+    <string name="classChoiceBeginnerButton">Beginner</string>
+    <string name="classChoiceRegularButton">Regular</string>
+    <string name="classChoiceAdvancedButton">Advanced</string>
+    <string name="classChoiceExpertButton">Expert</string>
+    <string name="classChoiceChampionButton">Champion</string>
+
     //Character information
     <string name="statsTextView">Stats</string>
     <string name="nameTextView">Aaren</string>
