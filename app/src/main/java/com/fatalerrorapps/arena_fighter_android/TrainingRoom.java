@@ -171,6 +171,68 @@ public class TrainingRoom extends AppCompatActivity {
                               final Button continueButton){
         //Train stat with cool math crap and show results
 
+        Random rand = new Random();
+        int timesToTrain = 1;
+        if(rand.nextInt(Player.playerLuck) == Player.playerLuck){
+            timesToTrain += 1;
+        }
+        int statGains = 0;
+        String statName = "";
+
+        for(int i = 1; i <= timesToTrain; i++){
+            //Do crap
+            if(statToTrain == 1){
+                statGains += rand.nextInt(5);
+                Player.playerStrength += statGains;
+                statName = "Strength";
+
+            }else if(statToTrain == 2){
+                statGains += rand.nextInt(5);
+                Player.playerEndurance += statGains;
+                statName = "Endurance";
+            }else{
+                statGains += rand.nextInt(5);
+                Player.playerFatigue += statGains;
+                statName = "Fatigue";
+            }//End if/else
+        }//End for loop
+
+        //Refreshing the stat window
+        TextView strength = findViewById(R.id.trainingRoomStrengthTextView);
+        strength.setText(String.valueOf(Player.playerStrength));
+        TextView endurance = findViewById(R.id.trainingRoomEnduranceTextView);
+        endurance.setText(String.valueOf(Player.playerEndurance));
+        TextView fatigue = findViewById(R.id.trainingRoomFatigueTextView);
+        fatigue.setText(String.valueOf(Player.playerFatigue));
+
+        //Setting the text value
+        String trainingResults = "";
+        if(statGains == 0){
+            trainingResults = "Your training failed!";
+        }else{
+            trainingResults = statName + " grew by " + statGains + " point!";
+        }
+
+        text.setText(trainingResults);
+        yesButton.setVisibility(View.INVISIBLE);
+        noButton.setVisibility(View.INVISIBLE);
+        continueButton.setVisibility(View.VISIBLE);
+
+        //Button function
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                trainStrengthButton.setVisibility(View.VISIBLE);
+                trainEnduranceButton.setVisibility(View.VISIBLE);
+                trainFatigueButton.setVisibility(View.VISIBLE);
+                textBackground.setVisibility(View.INVISIBLE);
+                backToWaitingRoomButton.setVisibility(View.VISIBLE);
+                text.setVisibility(View.INVISIBLE);
+                yesButton.setVisibility(View.INVISIBLE);
+                noButton.setVisibility(View.INVISIBLE);
+                continueButton.setVisibility(View.INVISIBLE);
+            }
+        });//End continueButton
 
     }//End statTraining
 
