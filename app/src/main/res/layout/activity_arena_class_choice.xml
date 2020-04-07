@@ -13,8 +13,10 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/arena_background" />
 
     <Button
@@ -66,4 +68,141 @@
         android:text="@string/classChoiceChampionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classChoiceExpertButton" />
+
+    <ImageView
+        android:id="@+id/classChoiceTextBackgroundImageView"
+        android:layout_width="373dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/classChoiceBackgroundImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/classChoiceTextTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/classChoiceText"
+        android:textColor="#CDDC39"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/classChoiceTextBackgroundImageView"
+        app:layout_constraintEnd_toEndOf="@+id/classChoiceTextBackgroundImageView"
+        app:layout_constraintStart_toStartOf="@+id/classChoiceTextBackgroundImageView"
+        app:layout_constraintTop_toTopOf="@+id/classChoiceTextBackgroundImageView" />
+
+    <ImageView
+        android:id="@+id/classChoiceBetWindowImageView"
+        android:layout_width="280dp"
+        android:layout_height="158dp"
+        android:layout_marginBottom="232dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/classChoiceBetTextTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/classChoiceBetTextTextView"
+        android:textColor="#CDDC39"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/classChoiceBetWindowImageView"
+        app:layout_constraintStart_toStartOf="@+id/classChoiceBetWindowImageView"
+        app:layout_constraintTop_toTopOf="@+id/classChoiceBetWindowImageView" />
+
+    <TextView
+        android:id="@+id/classChoicePlayerCashDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/cashDescriptionTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/classChoiceBetWindowImageView"
+        app:layout_constraintStart_toStartOf="@+id/classChoiceBetWindowImageView"
+        app:layout_constraintTop_toBottomOf="@+id/classChoiceBetTextTextView" />
+
+    <TextView
+        android:id="@+id/classChoiceCashTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="5"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/classChoiceBetWindowImageView"
+        app:layout_constraintStart_toEndOf="@+id/classChoicePlayerCashDescriptionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/classChoiceBetTextTextView" />
+
+    <EditText
+        android:id="@+id/classChoiceBetAmountEditText"
+        android:layout_width="127dp"
+        android:layout_height="53dp"
+        android:ems="10"
+        android:hint="@string/classChoiceBetTextEditText"
+        android:inputType="number"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/classChoiceBetWindowImageView"
+        app:layout_constraintEnd_toEndOf="@+id/classChoiceBetWindowImageView"
+        app:layout_constraintStart_toEndOf="@+id/classChoiceCashTextView"
+        app:layout_constraintTop_toBottomOf="@+id/classChoiceBetTextTextView" />
+
+    <Button
+        android:id="@+id/classChoiceBackToWaitingRoomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/backToWaitingRoomButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classChoiceChampionButton" />
+
+    <ImageView
+        android:id="@+id/classChoiceBadBetWindowImageView"
+        android:layout_width="362dp"
+        android:layout_height="165dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classChoiceBetWindowImageView"
+        app:srcCompat="@drawable/text_background" />
+
+    <TextView
+        android:id="@+id/classChoiceBadBetTextTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/classChoiceBadBetTextTextView"
+        android:textColor="#CDDC39"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/classChoiceBadBetWindowImageView"
+        app:layout_constraintEnd_toEndOf="@+id/classChoiceBadBetWindowImageView"
+        app:layout_constraintStart_toStartOf="@+id/classChoiceBadBetWindowImageView"
+        app:layout_constraintTop_toTopOf="@+id/classChoiceBadBetWindowImageView" />
+
+    <Button
+        android:id="@+id/classChoiceContinueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/continueButton"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/classChoiceBadBetWindowImageView"
+        app:layout_constraintEnd_toEndOf="@+id/classChoiceBadBetWindowImageView"
+        app:layout_constraintTop_toBottomOf="@+id/classChoiceBadBetTextTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

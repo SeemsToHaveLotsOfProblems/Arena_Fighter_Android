@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,19 +26,20 @@ public class Arena extends AppCompatActivity {
         //Getting extra data
         Intent extra = getIntent();
         int opponentFighterClass = extra.getIntExtra("fighterClass", 1);
+        int betAmount = extra.getIntExtra("betAmount", 0);
 
         //Name & Health
         TextView playerName = findViewById(R.id.arenaPlayerNameTextView);
-        TextView playerHealth = findViewById(R.id.arenaPlayerHealthTextView);
-        TextView opponentName = findViewById(R.id.arenaOpponentNameTextView);
-        TextView opponentHealth = findViewById(R.id.arenaOpponentHealthTextView);
+        final TextView playerHealth = findViewById(R.id.arenaPlayerHealthTextView);
+        final TextView opponentName = findViewById(R.id.arenaOpponentNameTextView);
+        final TextView opponentHealth = findViewById(R.id.arenaOpponentHealthTextView);
         //Text
-        ImageView textBackground = findViewById(R.id.arenaTextBackgroundImageView);
-        TextView text = findViewById(R.id.arenaTextTextView);
+        final ImageView textBackground = findViewById(R.id.arenaTextBackgroundImageView);
+        final TextView text = findViewById(R.id.arenaTextTextView);
         //Buttons
-        Button attackButton = findViewById(R.id.arenaAttackButton);
-        Button defendButton = findViewById(R.id.arenaDefendButton);
-        Button continueButton = findViewById(R.id.arenaContinueButton);
+        final Button attackButton = findViewById(R.id.arenaAttackButton);
+        final Button defendButton = findViewById(R.id.arenaDefendButton);
+        final Button continueButton = findViewById(R.id.arenaContinueButton);
 
         //Setting names
         playerName.setText(Player.playerName);
@@ -45,18 +47,66 @@ public class Arena extends AppCompatActivity {
         opponentName.setText(opponentNaming());
 
         //Creating opponent stats
-        int opponentStrength = opponentStats(opponentFighterClass);
-        int opponentEndurance = opponentStats(opponentFighterClass);
-        int opponentFatigue = opponentStats(opponentFighterClass);
-
+        final int opponentStrength = opponentStats(opponentFighterClass);
+        final int opponentEndurance = opponentStats(opponentFighterClass);
+        final int opponentFatigue = opponentStats(opponentFighterClass);
 
         //Setting health
-        int playerHealthVal = healthGen();
-        playerHealth.setText(String.valueOf(playerHealthVal));
-        int opponentHealthVal = healthGen(opponentEndurance, opponentFatigue);
-        opponentHealth.setText(String.valueOf(opponentHealthVal));
+        final int[] playerHealthVal = {healthGen()};
+        playerHealth.setText(String.valueOf(playerHealthVal[0]));
+        final int[] opponentHealthVal = {healthGen(opponentEndurance, opponentFatigue)};
+        opponentHealth.setText(String.valueOf(opponentHealthVal[0]));
 
+        //Button Functions
+        attackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int[] damageDone = {attack(opponentStrength, opponentEndurance, opponentFatigue, true)};
+                //call window to show damage dealt
+                attackButton.setVisibility(View.INVISIBLE);
+                defendButton.setVisibility(View.INVISIBLE);
+                textBackground.setVisibility(View.VISIBLE);
+                text.setVisibility(View.VISIBLE);
+                final String[] textToDisplay = {Player.playerName + ", attacked and \ndealt " +
+                        damageDone[0] + " points of damage!"};
+                text.setText(textToDisplay[0]);
+                continueButton.setVisibility(View.VISIBLE);
+                opponentHealthVal[0] -= damageDone[0];
+                opponentHealth.setText(String.valueOf(opponentHealthVal[0]));
 
+                continueButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //opponent turn
+                        damageDone[0] = attack(opponentStrength, opponentEndurance, opponentFatigue, false);
+                        //call window to show opponent damage dealt
+                        textToDisplay[0] = opponentName + ", attacked and \ndealt " +
+                                damageDone[0] + " points of damage!";
+                        text.setText(String.valueOf(textToDisplay));
+                        playerHealthVal[0] -= damageDone[0];
+                        playerHealth.setText(String.valueOf(playerHealthVal[0]));
+
+                        continueButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                attackButton.setVisibility(View.VISIBLE);
+                                defendButton.setVisibility(View.VISIBLE);
+                                textBackground.setVisibility(View.INVISIBLE);
+                                text.setVisibility(View.INVISIBLE);
+                                continueButton.setVisibility(View.INVISIBLE);
+                            }
+                        });//End continueButton2
+                    }
+                });//End continueButton
+            }
+        });//End attackButton
+
+        defendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });//End defendButton
 
     }//End onCreate
 
@@ -133,5 +183,61 @@ public class Arena extends AppCompatActivity {
 
         return statVal;
     }//End opponentStats
+
+
+    private int attack(int opponentStrength, int opponentEndurance, int opponentFatigue,
+                       boolean playerTurn){
+        int damageDone;
+        Random rand = new Random();
+        if(playerTurn) {
+            //Player raw damage calculation
+            int playerAttack;
+            if (rand.nextInt(Player.playerFatigue) == 0) {
+                playerAttack = 0;
+            } else {
+                playerAttack = Player.playerStrength * rand.nextInt(Player.playerLuck);
+            }
+
+            //Opponent raw defence calculation
+            int opponentDefend;
+            if (rand.nextInt(opponentFatigue) == 0) {
+                //Critical failure to defend
+                opponentDefend = 0;
+            } else {
+                opponentDefend = (opponentEndurance * rand.nextInt(opponentStrength)) / 2;
+            }
+
+            //Finding final damage
+            damageDone = playerAttack - opponentDefend;
+            if (damageDone < 0) {
+                damageDone = 0;
+            }
+        }else{
+            //Opponent raw damage calculation
+            int opponentAttack;
+            if (rand.nextInt(opponentFatigue) == 0) {
+                opponentAttack = 0;
+            } else {
+                opponentAttack = (opponentStrength * rand.nextInt(opponentFatigue)) / 2;
+            }
+
+            //Player raw defence calculation
+            int playerDefend;
+            if (rand.nextInt(Player.playerFatigue) == 0) {
+                //Critical failure to defend
+                playerDefend = 0;
+            } else {
+                playerDefend = (Player.playerEndurance * rand.nextInt(Player.playerLuck));
+            }
+
+            //Finding final damage
+            damageDone = opponentAttack - playerDefend;
+            if (damageDone < 0) {
+                damageDone = 0;
+            }
+        }
+
+        return damageDone;
+    }
 
 }//End Arena

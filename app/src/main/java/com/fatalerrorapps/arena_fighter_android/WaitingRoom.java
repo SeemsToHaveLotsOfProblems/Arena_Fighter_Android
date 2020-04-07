@@ -40,7 +40,7 @@ public class WaitingRoom extends AppCompatActivity {
         fightInArenaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentToFight = new Intent(WaitingRoom.this, Arena.class);
+                Intent intentToFight = new Intent(WaitingRoom.this, ArenaClassChoice.class);
                 WaitingRoom.this.startActivity(intentToFight);
             }
         });//End fightInArenaButton

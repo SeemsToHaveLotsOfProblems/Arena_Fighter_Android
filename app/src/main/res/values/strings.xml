@@ -55,4 +55,8 @@
     //In Game Text
     <string name="notEnoughCash">"You don't have enough cash to train!"</string>
     <string name="healthDescription">Health:</string>
+    <string name="classChoiceText">Choose the class you wish to fight in!</string>
+    <string name="classChoiceBetTextTextView">How much would you like to bet?</string>
+    <string name="classChoiceBetTextEditText">Bet?</string>
+    <string name="classChoiceBadBetTextTextView">You don\'t have enough cash \nto make that bet!</string>
 </resources>
