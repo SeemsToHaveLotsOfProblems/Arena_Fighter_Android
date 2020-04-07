@@ -2,7 +2,6 @@ package com.fatalerrorapps.arena_fighter_android;
 
 import android.app.Application;
 
-import java.util.Random;
 
 public class Player extends Application {
 

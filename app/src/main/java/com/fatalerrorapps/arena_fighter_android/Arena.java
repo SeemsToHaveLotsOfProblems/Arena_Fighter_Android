@@ -13,6 +13,10 @@ import java.util.Random;
 
 public class Arena extends AppCompatActivity {
 
+    //private class variables
+    private boolean counterAttack;
+    private boolean defended;
+
     @Override
     public void onBackPressed() {
         // Do Here what ever you want do on back press;
@@ -25,8 +29,8 @@ public class Arena extends AppCompatActivity {
 
         //Getting extra data
         Intent extra = getIntent();
-        int opponentFighterClass = extra.getIntExtra("fighterClass", 1);
-        int betAmount = extra.getIntExtra("betAmount", 0);
+        final int opponentFighterClass = extra.getIntExtra("fighterClass", 1);
+        final int betAmount = extra.getIntExtra("betAmount", 0);
 
         //Name & Health
         TextView playerName = findViewById(R.id.arenaPlayerNameTextView);
@@ -67,7 +71,7 @@ public class Arena extends AppCompatActivity {
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                damageDone[0] = attack(opponentStrength, opponentEndurance, opponentFatigue, true);
+                damageDone[0] = attack(opponentStrength, opponentEndurance, true);
                 //call window to show damage dealt
                 attackButton.setVisibility(View.INVISIBLE);
                 defendButton.setVisibility(View.INVISIBLE);
@@ -87,36 +91,69 @@ public class Arena extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Defend function called here
+                counterAttack = defend();
+                Random rand = new Random();
 
-                //call window to show damage dealt
-                //Fix up defend related stuff
-                attackButton.setVisibility(View.INVISIBLE);
-                defendButton.setVisibility(View.INVISIBLE);
-                textBackground.setVisibility(View.VISIBLE);
-                text.setVisibility(View.VISIBLE);
-                textToDisplay[0] = Player.playerName + ", attacked and \ndealt " +
-                        damageDone[0] + " points of damage!";
-                text.setText(textToDisplay[0]);
-                continueButton.setVisibility(View.VISIBLE);
-                opponentHealthVal[0] -= damageDone[0];
-                opponentHealth.setText(String.valueOf(opponentHealthVal[0]));
+                if(counterAttack){
+                    damageDone[0] = Player.playerEndurance + rand.nextInt(1 + Player.playerEndurance);
+                    attackButton.setVisibility(View.INVISIBLE);
+                    defendButton.setVisibility(View.INVISIBLE);
+                    textBackground.setVisibility(View.VISIBLE);
+                    text.setVisibility(View.VISIBLE);
+                    textToDisplay[0] = Player.playerName + ", counter attacked and \ndealt " +
+                            damageDone[0] + " points of damage!";
+                    text.setText(textToDisplay[0]);
+                    continueButton.setVisibility(View.VISIBLE);
+                    opponentHealthVal[0] -= damageDone[0];
+                    opponentHealth.setText(String.valueOf(opponentHealthVal[0]));
+                }else {
+                    defended = true;
+                    attackButton.setVisibility(View.INVISIBLE);
+                    defendButton.setVisibility(View.INVISIBLE);
+                    textBackground.setVisibility(View.VISIBLE);
+                    text.setVisibility(View.VISIBLE);
+                    textToDisplay[0] = Player.playerName + ", defended!";
+                    text.setText(textToDisplay[0]);
+                    continueButton.setVisibility(View.VISIBLE);
+                }//End if/else
             }
         });//End defendButton
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //opponent turn
-                damageDone[0] = attack(opponentStrength, opponentEndurance, opponentFatigue, false);
-                //call window to show opponent damage dealt
-                textToDisplay[0] = nameOfOpponent + ", attacked and \ndealt " +
-                        damageDone[0] + " points of damage!";
-                text.setText(textToDisplay[0]);
-                playerHealthVal[0] -= damageDone[0];
-                playerHealth.setText(String.valueOf(playerHealthVal[0]));
+                if(counterAttack) {
+                    //opponent turn
+                    textToDisplay[0] = nameOfOpponent + ", was staggered by the counter attack!";
+                    text.setText(textToDisplay[0]);
 
-                continueButton.setVisibility(View.INVISIBLE);
-                continue2Button.setVisibility(View.VISIBLE);
+                    continueButton.setVisibility(View.INVISIBLE);
+                    continue2Button.setVisibility(View.VISIBLE);
+                }else if(defended){
+                    //opponent turn
+                    damageDone[0] = (attack(opponentStrength, opponentEndurance, false)) / 2;
+                    //call window to show opponent damage dealt
+                    textToDisplay[0] = nameOfOpponent + ", attacked and \ndealt " +
+                            damageDone[0] + " points of damage!";
+                    text.setText(textToDisplay[0]);
+                    playerHealthVal[0] -= damageDone[0];
+                    playerHealth.setText(String.valueOf(playerHealthVal[0]));
+
+                    continueButton.setVisibility(View.INVISIBLE);
+                    continue2Button.setVisibility(View.VISIBLE);
+                }else{
+                    //opponent turn
+                    damageDone[0] = attack(opponentStrength, opponentEndurance, false);
+                    //call window to show opponent damage dealt
+                    textToDisplay[0] = nameOfOpponent + ", attacked and \ndealt " +
+                            damageDone[0] + " points of damage!";
+                    text.setText(textToDisplay[0]);
+                    playerHealthVal[0] -= damageDone[0];
+                    playerHealth.setText(String.valueOf(playerHealthVal[0]));
+
+                    continueButton.setVisibility(View.INVISIBLE);
+                    continue2Button.setVisibility(View.VISIBLE);
+                }//End if/else
             }
         });//End continueButton
 
@@ -128,6 +165,8 @@ public class Arena extends AppCompatActivity {
                 textBackground.setVisibility(View.INVISIBLE);
                 text.setVisibility(View.INVISIBLE);
                 continue2Button.setVisibility(View.INVISIBLE);
+                victoryCheck(playerHealthVal[0], opponentHealthVal[0], opponentFighterClass, betAmount,
+                        attackButton, defendButton, continueButton, continue2Button, text, textBackground);
             }
         });//End continueButton2
     }//End onCreate
@@ -135,7 +174,7 @@ public class Arena extends AppCompatActivity {
 
     private String opponentNaming(){
         Random rand = new Random();
-        String name = "";
+        String name;
 
         if(rand.nextInt(2) == 1){
             //Male Names
@@ -178,7 +217,7 @@ public class Arena extends AppCompatActivity {
 
 
     private int opponentStats(int fighterClass){
-        int timesToTrain = 0;
+        int timesToTrain;
         Random rand = new Random();
         int statVal = 0;
 
@@ -207,7 +246,7 @@ public class Arena extends AppCompatActivity {
     }//End opponentStats
 
 
-    private int attack(int opponentStrength, int opponentEndurance, int opponentFatigue,
+    private int attack(int opponentStrength, int opponentEndurance,
                        boolean playerTurn){
         int damageDone;
         Random rand = new Random();
@@ -244,8 +283,82 @@ public class Arena extends AppCompatActivity {
     }
 
 
-    private void defend(){
+    private boolean defend(){
+        Random rand = new Random();
+        boolean counterAttack = false;
+        int oddsOfCounter = rand.nextInt(10);
 
+        for(int i = rand.nextInt(1 + Player.playerLuck); i > 0; i--) {
+            if (oddsOfCounter == 7) {
+                counterAttack = true;
+                i = 0;
+            }
+        }//End for loop
+        return counterAttack;
     }//End defend
+
+
+    private void victoryCheck(int playerHealth, int opponentHealth, int fighterClass, int playerBet,
+                              Button attackButton, Button defendButton, Button continueButton,
+                              Button continue2Button, TextView text, ImageView textBackground){
+        boolean endFight = false;
+        boolean playerWin = false;
+        Random rand = new Random();
+        //Find Winner
+        if(playerHealth <= 0){
+            endFight = true;
+        }
+        if(opponentHealth <= 0){
+            endFight = true;
+            playerWin = true;
+        }
+
+        if(endFight) {
+            //Giving cash
+            int cashForFighting = 10;
+            for (int i = 1; i < fighterClass; i++) {
+                cashForFighting *= 2;
+            }
+            if(playerWin) {
+                int betPrize = playerBet * 2;
+                cashForFighting += betPrize;
+                Player.playerCash += cashForFighting;
+                Player.playerFans += rand.nextInt(10);
+            }else{
+                Player.playerCash += cashForFighting;
+            }
+
+            String endFightMessage;
+
+            if(playerWin){
+                endFightMessage = Player.playerName + " wins!\n" + "Congratulations!\n" + "You win $" +
+                cashForFighting + "!";
+                Player.fightsWon += 1;
+                Player.totalFights += 1;
+            }else{
+                endFightMessage = "You lose!\n" + "Better luck next time!\n" +
+                        "You earn $" + cashForFighting + " as a consolation prize!";
+                Player.fightsLost += 1;
+                Player.totalFights += 1;
+            }
+
+            //Showing win/loss message
+            attackButton.setVisibility(View.INVISIBLE);
+            defendButton.setVisibility(View.INVISIBLE);
+            continue2Button.setVisibility(View.INVISIBLE);
+            continueButton.setVisibility(View.VISIBLE);
+            textBackground.setVisibility(View.VISIBLE);
+            text.setText(endFightMessage);
+            text.setVisibility(View.VISIBLE);
+
+            continueButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent backToWaitingRoom = new Intent(Arena.this, WaitingRoom.class);
+                    Arena.this.startActivity(backToWaitingRoom);
+                }
+            });//End continueButton
+        }//End endFight check
+    }//End victoryCheck
 
 }//End Arena
