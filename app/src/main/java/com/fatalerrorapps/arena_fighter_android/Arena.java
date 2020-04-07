@@ -40,11 +40,13 @@ public class Arena extends AppCompatActivity {
         final Button attackButton = findViewById(R.id.arenaAttackButton);
         final Button defendButton = findViewById(R.id.arenaDefendButton);
         final Button continueButton = findViewById(R.id.arenaContinueButton);
+        final Button continue2Button = findViewById(R.id.classChoiceContinueButton2);
 
         //Setting names
         playerName.setText(Player.playerName);
         //Graphics are added in the opponentNaming function
-        opponentName.setText(opponentNaming());
+        final String nameOfOpponent = opponentNaming();
+        opponentName.setText(nameOfOpponent);
 
         //Creating opponent stats
         final int opponentStrength = opponentStats(opponentFighterClass);
@@ -57,57 +59,77 @@ public class Arena extends AppCompatActivity {
         final int[] opponentHealthVal = {healthGen(opponentEndurance, opponentFatigue)};
         opponentHealth.setText(String.valueOf(opponentHealthVal[0]));
 
+        //Variables
+        final String[] textToDisplay = new String[1];
+        final int[] damageDone = {0};
+
         //Button Functions
         attackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final int[] damageDone = {attack(opponentStrength, opponentEndurance, opponentFatigue, true)};
+                damageDone[0] = attack(opponentStrength, opponentEndurance, opponentFatigue, true);
                 //call window to show damage dealt
                 attackButton.setVisibility(View.INVISIBLE);
                 defendButton.setVisibility(View.INVISIBLE);
                 textBackground.setVisibility(View.VISIBLE);
                 text.setVisibility(View.VISIBLE);
-                final String[] textToDisplay = {Player.playerName + ", attacked and \ndealt " +
-                        damageDone[0] + " points of damage!"};
+                textToDisplay[0] = Player.playerName + ", attacked and \ndealt " +
+                        damageDone[0] + " points of damage!";
                 text.setText(textToDisplay[0]);
                 continueButton.setVisibility(View.VISIBLE);
                 opponentHealthVal[0] -= damageDone[0];
                 opponentHealth.setText(String.valueOf(opponentHealthVal[0]));
-
-                continueButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //opponent turn
-                        damageDone[0] = attack(opponentStrength, opponentEndurance, opponentFatigue, false);
-                        //call window to show opponent damage dealt
-                        textToDisplay[0] = opponentName + ", attacked and \ndealt " +
-                                damageDone[0] + " points of damage!";
-                        text.setText(String.valueOf(textToDisplay));
-                        playerHealthVal[0] -= damageDone[0];
-                        playerHealth.setText(String.valueOf(playerHealthVal[0]));
-
-                        continueButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                attackButton.setVisibility(View.VISIBLE);
-                                defendButton.setVisibility(View.VISIBLE);
-                                textBackground.setVisibility(View.INVISIBLE);
-                                text.setVisibility(View.INVISIBLE);
-                                continueButton.setVisibility(View.INVISIBLE);
-                            }
-                        });//End continueButton2
-                    }
-                });//End continueButton
             }
         });//End attackButton
+
 
         defendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Defend function called here
 
+                //call window to show damage dealt
+                //Fix up defend related stuff
+                attackButton.setVisibility(View.INVISIBLE);
+                defendButton.setVisibility(View.INVISIBLE);
+                textBackground.setVisibility(View.VISIBLE);
+                text.setVisibility(View.VISIBLE);
+                textToDisplay[0] = Player.playerName + ", attacked and \ndealt " +
+                        damageDone[0] + " points of damage!";
+                text.setText(textToDisplay[0]);
+                continueButton.setVisibility(View.VISIBLE);
+                opponentHealthVal[0] -= damageDone[0];
+                opponentHealth.setText(String.valueOf(opponentHealthVal[0]));
             }
         });//End defendButton
 
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //opponent turn
+                damageDone[0] = attack(opponentStrength, opponentEndurance, opponentFatigue, false);
+                //call window to show opponent damage dealt
+                textToDisplay[0] = nameOfOpponent + ", attacked and \ndealt " +
+                        damageDone[0] + " points of damage!";
+                text.setText(textToDisplay[0]);
+                playerHealthVal[0] -= damageDone[0];
+                playerHealth.setText(String.valueOf(playerHealthVal[0]));
+
+                continueButton.setVisibility(View.INVISIBLE);
+                continue2Button.setVisibility(View.VISIBLE);
+            }
+        });//End continueButton
+
+        continue2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attackButton.setVisibility(View.VISIBLE);
+                defendButton.setVisibility(View.VISIBLE);
+                textBackground.setVisibility(View.INVISIBLE);
+                text.setVisibility(View.INVISIBLE);
+                continue2Button.setVisibility(View.INVISIBLE);
+            }
+        });//End continueButton2
     }//End onCreate
 
 
@@ -191,21 +213,11 @@ public class Arena extends AppCompatActivity {
         Random rand = new Random();
         if(playerTurn) {
             //Player raw damage calculation
-            int playerAttack;
-            if (rand.nextInt(Player.playerFatigue) == 0) {
-                playerAttack = 0;
-            } else {
-                playerAttack = Player.playerStrength * rand.nextInt(Player.playerLuck);
-            }
+            int playerAttack = Player.playerStrength + rand.nextInt(Player.playerStrength) *
+                    rand.nextInt(Player.playerLuck);
 
             //Opponent raw defence calculation
-            int opponentDefend;
-            if (rand.nextInt(opponentFatigue) == 0) {
-                //Critical failure to defend
-                opponentDefend = 0;
-            } else {
-                opponentDefend = (opponentEndurance * rand.nextInt(opponentStrength)) / 2;
-            }
+            int opponentDefend = (opponentEndurance + rand.nextInt(1 + opponentEndurance)) / 2;
 
             //Finding final damage
             damageDone = playerAttack - opponentDefend;
@@ -214,21 +226,12 @@ public class Arena extends AppCompatActivity {
             }
         }else{
             //Opponent raw damage calculation
-            int opponentAttack;
-            if (rand.nextInt(opponentFatigue) == 0) {
-                opponentAttack = 0;
-            } else {
-                opponentAttack = (opponentStrength * rand.nextInt(opponentFatigue)) / 2;
-            }
+            int opponentAttack = (opponentStrength + rand.nextInt(1 + opponentStrength)) *
+                    rand.nextInt(3);
 
             //Player raw defence calculation
-            int playerDefend;
-            if (rand.nextInt(Player.playerFatigue) == 0) {
-                //Critical failure to defend
-                playerDefend = 0;
-            } else {
-                playerDefend = (Player.playerEndurance * rand.nextInt(Player.playerLuck));
-            }
+            int playerDefend = (Player.playerEndurance + (rand.nextInt(1 + Player.playerEndurance) / 2) *
+                    rand.nextInt(Player.playerLuck));
 
             //Finding final damage
             damageDone = opponentAttack - playerDefend;
@@ -239,5 +242,10 @@ public class Arena extends AppCompatActivity {
 
         return damageDone;
     }
+
+
+    private void defend(){
+
+    }//End defend
 
 }//End Arena

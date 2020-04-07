@@ -167,9 +167,9 @@
 
     <ImageView
         android:id="@+id/arenaTextBackgroundImageView"
-        android:layout_width="489dp"
-        android:layout_height="231dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="417dp"
+        android:layout_height="153dp"
+        android:layout_marginBottom="44dp"
         android:scaleType="centerCrop"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -193,6 +193,16 @@
 
     <Button
         android:id="@+id/arenaContinueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/continueButton"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/arenaTextBackgroundImageView"
+        app:layout_constraintEnd_toEndOf="@+id/arenaBackgroundImageView" />
+
+    <Button
+        android:id="@+id/classChoiceContinueButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
