@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/TalkWithFansTalkToFanButton"
+        android:id="@+id/talkWithFansTalkToFanButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
@@ -121,6 +121,16 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/backToWaitingRoomButton"
-        app:layout_constraintBottom_toTopOf="@+id/TalkWithFansTalkToFanButton"
+        app:layout_constraintBottom_toTopOf="@+id/talkWithFansTalkToFanButton"
+        app:layout_constraintEnd_toEndOf="@+id/talkWithFansBackgroundImageView" />
+
+    <Button
+        android:id="@+id/talkWithFansContinueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="@string/continueButton"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/talkWithFandTextBackgroundImageView"
         app:layout_constraintEnd_toEndOf="@+id/talkWithFansBackgroundImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
