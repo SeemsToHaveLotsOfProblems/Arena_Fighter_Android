@@ -45,6 +45,14 @@ public class WaitingRoom extends AppCompatActivity {
             }
         });//End fightInArenaButton
 
+        talkToFansButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent talking = new Intent(WaitingRoom.this, TalkWithFans.class);
+                WaitingRoom.this.startActivity(talking);
+            }
+        });//End talkToFansButton
+
     }//End onCreate
 
     private void textViewSetters(){

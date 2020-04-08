@@ -31,6 +31,8 @@
     <string name="classChoiceExpertButton">Expert</string>
     <string name="classChoiceChampionButton">Champion</string>
 
+    <string name="talkWithFansTalkToFanButton">Talk to your fans</string>
+
     //Character information
     <string name="statsTextView">Stats</string>
     <string name="nameTextView">Aaren</string>
